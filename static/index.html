@@ -23,7 +23,7 @@
             selection.addRange(range);
             content.focus()
         }
-        let wsProto = window.localStorage.protocol === 'https' ? 'wss' : 'ws'
+        let wsProto = window.location.protocol === 'https:' ? 'wss' : 'ws'
         ws = new WebSocket(`${wsProto}://${window.location.host}/ws`);
         ws.onmessage = event => {
             content.append(event.data);
