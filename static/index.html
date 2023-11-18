@@ -23,7 +23,8 @@
             selection.addRange(range);
             content.focus()
         }
-        ws = new WebSocket("ws://localhost:3000/ws");
+        let wsProto = window.localStorage.protocol === 'https' ? 'wss' : 'ws'
+        ws = new WebSocket(`${wsProto}://${window.location.host}/ws`);
         ws.onmessage = event => {
             content.append(event.data);
             setTimeout(setCaretToEnd);
